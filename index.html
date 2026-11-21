@@ -756,6 +756,38 @@
                 </div>
             </div>
 
+            <!-- 国土地理院ハザードマップ ＆ Yahoo!雨雲レーダー 外部連動バー -->
+            <div class="p-3.5 rounded-xl bg-slate-950/90 border border-sky-500/30 flex flex-col lg:flex-row lg:items-center justify-between gap-3 text-xs">
+                <div class="space-y-0.5">
+                    <div class="font-bold text-sky-300">🗺️ 外部公的ハザード・雨雲レーダー連動（現在選択エリア・座標同期）</div>
+                    <div id="externalMapCoordText" class="text-[11px] font-mono text-slate-400">
+                        連動座標: 北緯 34.4900° / 東経 133.9460°（岡山県玉野市・宇野港〜三井E&S臨海重工業エリア）
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 shrink-0">
+                    <a
+                        id="gsiHazardMapLink"
+                        href="https://disaportal.gsi.go.jp/maps/?ll=34.49,133.946&z=14&base=pale&vs=1c0j0l0u0t0z0r0s0m0f1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="px-3 py-2 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-200 border border-sky-400/40 font-bold transition inline-flex items-center gap-1.5"
+                    >
+                        <span>🏛️ 国土地理院 ハザードマップ</span>
+                        <span>↗</span>
+                    </a>
+                    <a
+                        id="yahooRainRadarLink"
+                        href="https://map.yahoo.co.jp/v3/place?lat=34.49&lon=133.946&zoom=14&mode=map&layer=rain"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="px-3 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-400/40 font-bold transition inline-flex items-center gap-1.5"
+                    >
+                        <span>🌧️ Yahoo! 雨雲レーダー</span>
+                        <span>↗</span>
+                    </a>
+                </div>
+            </div>
+
             <!-- 重要インフラ・周辺立地種別セレクター（コンビナート・原子力発電所） -->
             <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
@@ -1824,85 +1856,85 @@
             };
 
             const municipalityProfiles = {
-                TAMANO_UNO: { name: '岡山県 玉野市・宇野港〜三井E&S臨海重工業エリア', elev: 2.4, dist: 160, drain: 72, quake: 0.20, infra: 'COMBINAT', infraDist: 1.2 },
-                SETOUCHI_USHIMADO_OKU: { name: '岡山県 瀬戸内市・牛窓〜邑久沿岸エリア', elev: 1.9, dist: 180, drain: 66, quake: 0.18, infra: 'NONE', infraDist: 14.0 },
-                TAMANO_SHIBUKAWA: { name: '岡山県 玉野市・渋川〜日比・児島湾締切堤防周辺', elev: 1.8, dist: 140, drain: 55, quake: 0.15, infra: 'NONE', infraDist: 14.0 },
-                TAMANO_HACHIHAMA: { name: '岡山県 玉野市・八浜〜児島湖沿岸・内水警戒区', elev: 1.4, dist: 320, drain: 75, quake: 0.15, infra: 'NONE', infraDist: 19.0 },
-                TAMANO_HILL: { name: '岡山県 玉野市・深山〜滝・山間高台エリア', elev: 28.0, dist: 2200, drain: 35, quake: 0.15, infra: 'NONE', infraDist: 22.0 },
-                OKAYAMA_SOUTH: { name: '岡山県 岡山市南区・中区・旭川〜百間川下流低地', elev: 0.8, dist: 160, drain: 82, quake: 0.20, infra: 'NONE', infraDist: 25.0 },
-                KURASHIKI_MABI: { name: '岡山県 倉敷市・真備・高梁川/小田川合流低地', elev: 3.2, dist: 240, drain: 74, quake: 0.18, infra: 'NONE', infraDist: 16.0 },
-                KURASHIKI_MIZUSHIMA: { name: '岡山県 倉敷市・水島コンビナート・製油所/化学プラント沿岸', elev: 1.9, dist: 150, drain: 85, quake: 0.25, infra: 'COMBINAT', infraDist: 1.5 },
+                TAMANO_UNO: { name: '岡山県 玉野市・宇野港〜三井E&S臨海重工業エリア', lat: 34.4900, lon: 133.9460, elev: 2.4, dist: 160, drain: 72, quake: 0.20, infra: 'COMBINAT', infraDist: 1.2 },
+                SETOUCHI_USHIMADO_OKU: { name: '岡山県 瀬戸内市・牛窓〜邑久沿岸エリア', lat: 34.6210, lon: 134.1650, elev: 1.9, dist: 180, drain: 66, quake: 0.18, infra: 'NONE', infraDist: 14.0 },
+                TAMANO_SHIBUKAWA: { name: '岡山県 玉野市・渋川〜日比・児島湾締切堤防周辺', lat: 34.4580, lon: 133.8920, elev: 1.8, dist: 140, drain: 55, quake: 0.15, infra: 'NONE', infraDist: 14.0 },
+                TAMANO_HACHIHAMA: { name: '岡山県 玉野市・八浜〜児島湖沿岸・内水警戒区', lat: 34.5680, lon: 133.9380, elev: 1.4, dist: 320, drain: 75, quake: 0.15, infra: 'NONE', infraDist: 19.0 },
+                TAMANO_HILL: { name: '岡山県 玉野市・深山〜滝・山間高台エリア', lat: 34.5120, lon: 133.9150, elev: 28.0, dist: 2200, drain: 35, quake: 0.15, infra: 'NONE', infraDist: 22.0 },
+                OKAYAMA_SOUTH: { name: '岡山県 岡山市南区・中区・旭川〜百間川下流低地', lat: 34.6180, lon: 133.9420, elev: 0.8, dist: 160, drain: 82, quake: 0.20, infra: 'NONE', infraDist: 25.0 },
+                KURASHIKI_MABI: { name: '岡山県 倉敷市・真備・高梁川/小田川合流低地', lat: 34.6240, lon: 133.6880, elev: 3.2, dist: 240, drain: 74, quake: 0.18, infra: 'NONE', infraDist: 16.0 },
+                KURASHIKI_MIZUSHIMA: { name: '岡山県 倉敷市・水島コンビナート・製油所/化学プラント沿岸', lat: 34.5080, lon: 133.7320, elev: 1.9, dist: 150, drain: 85, quake: 0.25, infra: 'COMBINAT', infraDist: 1.5 },
 
-                HOKKAIDO_TOMARI: { name: '北海道 泊村・泊発電所（PAZ/UPZ圏内・日本海沿岸）', elev: 5.5, dist: 220, drain: 45, quake: 0.45, infra: 'NPP_UPZ', infraDist: 6.0 },
-                HOKKAIDO_TOMAKOMAI: { name: '北海道 苫小牧市・苫小牧東部/西港臨海コンビナート', elev: 2.1, dist: 190, drain: 68, quake: 0.55, infra: 'COMBINAT', infraDist: 2.0 },
-                HOKKAIDO_MURORAN: { name: '北海道 室蘭市・室蘭臨海重工業/製鉄・石油エリア', elev: 2.4, dist: 170, drain: 64, quake: 0.50, infra: 'COMBINAT', infraDist: 1.8 },
+                HOKKAIDO_TOMARI: { name: '北海道 泊村・泊発電所（PAZ/UPZ圏内・日本海沿岸）', lat: 43.0358, lon: 140.5142, elev: 5.5, dist: 220, drain: 45, quake: 0.45, infra: 'NPP_UPZ', infraDist: 6.0 },
+                HOKKAIDO_TOMAKOMAI: { name: '北海道 苫小牧市・苫小牧東部/西港臨海コンビナート', lat: 42.6340, lon: 141.6050, elev: 2.1, dist: 190, drain: 68, quake: 0.55, infra: 'COMBINAT', infraDist: 2.0 },
+                HOKKAIDO_MURORAN: { name: '北海道 室蘭市・室蘭臨海重工業/製鉄・石油エリア', lat: 42.3450, lon: 140.9780, elev: 2.4, dist: 170, drain: 64, quake: 0.50, infra: 'COMBINAT', infraDist: 1.8 },
 
-                AOMORI_HIGASHIDORI: { name: '青森県 東通村・東通原子力発電所周辺（UPZ圏内・太平洋沿岸）', elev: 8.0, dist: 350, drain: 45, quake: 0.65, infra: 'NPP_UPZ', infraDist: 8.0 },
-                AOMORI_ROKKASHO: { name: '青森県 六ヶ所村・核燃料サイクル/石油備蓄エリア', elev: 12.0, dist: 1200, drain: 40, quake: 0.55, infra: 'NPP_UPZ', infraDist: 5.0 },
-                AOMORI_HACHINOHE: { name: '青森県 八戸市・八戸臨海コンビナート/工業港湾エリア', elev: 2.0, dist: 180, drain: 70, quake: 0.65, infra: 'COMBINAT', infraDist: 2.2 },
+                AOMORI_HIGASHIDORI: { name: '青森県 東通村・東通原子力発電所周辺（UPZ圏内・太平洋沿岸）', lat: 41.4250, lon: 141.3880, elev: 8.0, dist: 350, drain: 45, quake: 0.65, infra: 'NPP_UPZ', infraDist: 8.0 },
+                AOMORI_ROKKASHO: { name: '青森県 六ヶ所村・核燃料サイクル/石油備蓄エリア', lat: 40.9610, lon: 141.3250, elev: 12.0, dist: 1200, drain: 40, quake: 0.55, infra: 'NPP_UPZ', infraDist: 5.0 },
+                AOMORI_HACHINOHE: { name: '青森県 八戸市・八戸臨海コンビナート/工業港湾エリア', lat: 40.5320, lon: 141.5220, elev: 2.0, dist: 180, drain: 70, quake: 0.65, infra: 'COMBINAT', infraDist: 2.2 },
 
-                MIYAGI_ONAGAWA: { name: '宮城県 女川町・石巻市・女川原子力発電所周辺（UPZ圏内）', elev: 4.2, dist: 240, drain: 55, quake: 0.75, infra: 'NPP_UPZ', infraDist: 7.5 },
-                MIYAGI_SENDAI: { name: '宮城県 仙台市・多賀城市・仙台塩釜臨海コンビナート', elev: 1.5, dist: 210, drain: 76, quake: 0.70, infra: 'COMBINAT', infraDist: 2.0 },
+                MIYAGI_ONAGAWA: { name: '宮城県 女川町・石巻市・女川原子力発電所周辺（UPZ圏内）', lat: 38.4008, lon: 141.4986, elev: 4.2, dist: 240, drain: 55, quake: 0.75, infra: 'NPP_UPZ', infraDist: 7.5 },
+                MIYAGI_SENDAI: { name: '宮城県 仙台市・多賀城市・仙台塩釜臨海コンビナート', lat: 38.2750, lon: 141.0150, elev: 1.5, dist: 210, drain: 76, quake: 0.70, infra: 'COMBINAT', infraDist: 2.0 },
 
-                FUKUSHIMA_DAIICHI_DAINI: { name: '福島県 大熊町・双葉町・富岡町・楢葉町（原子力災害警戒・UPZ/PAZ区域）', elev: 6.0, dist: 300, drain: 50, quake: 0.75, infra: 'NPP_PAZ', infraDist: 4.5 },
-                FUKUSHIMA_IWAKI: { name: '福島県 いわき市・小名浜臨海工業/エネルギーエリア', elev: 2.2, dist: 190, drain: 68, quake: 0.68, infra: 'COMBINAT', infraDist: 2.5 },
+                FUKUSHIMA_DAIICHI_DAINI: { name: '福島県 大熊町・双葉町・富岡町・楢葉町（原子力災害警戒・UPZ/PAZ区域）', lat: 37.4228, lon: 141.0328, elev: 6.0, dist: 300, drain: 50, quake: 0.75, infra: 'NPP_PAZ', infraDist: 4.5 },
+                FUKUSHIMA_IWAKI: { name: '福島県 いわき市・小名浜臨海工業/エネルギーエリア', lat: 36.9450, lon: 140.8920, elev: 2.2, dist: 190, drain: 68, quake: 0.68, infra: 'COMBINAT', infraDist: 2.5 },
 
-                IBARAKI_TOKAI2: { name: '茨城県 東海村・ひたちなか市・東海第二発電所周辺（UPZ圏内）', elev: 4.8, dist: 260, drain: 55, quake: 0.55, infra: 'NPP_UPZ', infraDist: 8.5 },
-                IBARAKI_KASHIMA: { name: '茨城県 鹿嶋市・神栖市・鹿島臨海石油化学コンビナート', elev: 2.3, dist: 200, drain: 72, quake: 0.55, infra: 'COMBINAT', infraDist: 1.8 },
+                IBARAKI_TOKAI2: { name: '茨城県 東海村・ひたちなか市・東海第二発電所周辺（UPZ圏内）', lat: 36.4667, lon: 140.6061, elev: 4.8, dist: 260, drain: 55, quake: 0.55, infra: 'NPP_UPZ', infraDist: 8.5 },
+                IBARAKI_KASHIMA: { name: '茨城県 鹿嶋市・神栖市・鹿島臨海石油化学コンビナート', lat: 35.9350, lon: 140.6920, elev: 2.3, dist: 200, drain: 72, quake: 0.55, infra: 'COMBINAT', infraDist: 1.8 },
 
-                CHIBA_CHIBA_KEIYO: { name: '千葉県 千葉市・市原市・袖ヶ浦市・京葉臨海コンビナート', elev: 1.4, dist: 220, drain: 85, quake: 0.55, infra: 'COMBINAT', infraDist: 1.6 },
-                CHIBA_KATORI_LOW: { name: '千葉県 利根川下流・九十九里沿岸低地', elev: 1.1, dist: 260, drain: 70, quake: 0.50, infra: 'NONE', infraDist: 24.0 },
+                CHIBA_CHIBA_KEIYO: { name: '千葉県 千葉市・市原市・袖ヶ浦市・京葉臨海コンビナート', lat: 35.5120, lon: 140.0450, elev: 1.4, dist: 220, drain: 85, quake: 0.55, infra: 'COMBINAT', infraDist: 1.6 },
+                CHIBA_KATORI_LOW: { name: '千葉県 利根川下流・九十九里沿岸低地', lat: 35.8850, lon: 140.6520, elev: 1.1, dist: 260, drain: 70, quake: 0.50, infra: 'NONE', infraDist: 24.0 },
 
-                TOKYO_KEIHIN_PORT: { name: '東京都 大田区・品川区・臨海副都心・東京港沿岸低地', elev: 1.2, dist: 250, drain: 90, quake: 0.55, infra: 'COMBINAT', infraDist: 3.5 },
-                TOKYO_EDOGAWA_KOTO: { name: '東京都 江東区・江戸川区・荒川/江戸川下流ゼロメートル地帯', elev: 0.3, dist: 180, drain: 92, quake: 0.55, infra: 'NONE', infraDist: 6.0 },
+                TOKYO_KEIHIN_PORT: { name: '東京都 大田区・品川区・臨海副都心・東京港沿岸低地', lat: 35.6250, lon: 139.7720, elev: 1.2, dist: 250, drain: 90, quake: 0.55, infra: 'COMBINAT', infraDist: 3.5 },
+                TOKYO_EDOGAWA_KOTO: { name: '東京都 江東区・江戸川区・荒川/江戸川下流ゼロメートル地帯', lat: 35.6750, lon: 139.8450, elev: 0.3, dist: 180, drain: 92, quake: 0.55, infra: 'NONE', infraDist: 6.0 },
 
-                KANAGAWA_KEIHIN_KAWASAKI: { name: '神奈川県 川崎市・横浜市鶴見/磯子・京浜臨海コンビナート', elev: 1.5, dist: 180, drain: 88, quake: 0.58, infra: 'COMBINAT', infraDist: 1.5 },
-                KANAGAWA_SHONAN_YOKOSUKA: { name: '神奈川県 横須賀市・三浦半島/湘南沿岸エリア', elev: 3.2, dist: 220, drain: 65, quake: 0.60, infra: 'NONE', infraDist: 18.0 },
+                KANAGAWA_KEIHIN_KAWASAKI: { name: '神奈川県 川崎市・横浜市鶴見/磯子・京浜臨海コンビナート', lat: 35.5180, lon: 139.7420, elev: 1.5, dist: 180, drain: 88, quake: 0.58, infra: 'COMBINAT', infraDist: 1.5 },
+                KANAGAWA_SHONAN_YOKOSUKA: { name: '神奈川県 横須賀市・三浦半島/湘南沿岸エリア', lat: 35.2780, lon: 139.6750, elev: 3.2, dist: 220, drain: 65, quake: 0.60, infra: 'NONE', infraDist: 18.0 },
 
-                NIIGATA_KASHIWAZAKI: { name: '新潟県 柏崎市・刈羽村・柏崎刈羽原子力発電所周辺（UPZ圏内）', elev: 5.0, dist: 280, drain: 55, quake: 0.60, infra: 'NPP_UPZ', infraDist: 7.0 },
-                NIIGATA_HIGASHIKO: { name: '新潟県 新潟市東区・聖籠町・新潟東港臨海工業地帯', elev: 1.6, dist: 240, drain: 74, quake: 0.55, infra: 'COMBINAT', infraDist: 2.2 },
+                NIIGATA_KASHIWAZAKI: { name: '新潟県 柏崎市・刈羽村・柏崎刈羽原子力発電所周辺（UPZ圏内）', lat: 37.4258, lon: 138.5956, elev: 5.0, dist: 280, drain: 55, quake: 0.60, infra: 'NPP_UPZ', infraDist: 7.0 },
+                NIIGATA_HIGASHIKO: { name: '新潟県 新潟市東区・聖籠町・新潟東港臨海工業地帯', lat: 37.9850, lon: 139.2250, elev: 1.6, dist: 240, drain: 74, quake: 0.55, infra: 'COMBINAT', infraDist: 2.2 },
 
-                ISHIKAWA_SHIKA: { name: '石川県 志賀町・能登半島沿岸・志賀原子力発電所周辺（UPZ圏内）', elev: 6.2, dist: 240, drain: 50, quake: 0.72, infra: 'NPP_UPZ', infraDist: 7.5 },
-                ISHIKAWA_KANAZAWA: { name: '石川県 金沢港・河北潟周辺沿岸低地', elev: 1.8, dist: 300, drain: 68, quake: 0.55, infra: 'NONE', infraDist: 25.0 },
+                ISHIKAWA_SHIKA: { name: '石川県 志賀町・能登半島沿岸・志賀原子力発電所周辺（UPZ圏内）', lat: 37.0614, lon: 136.7244, elev: 6.2, dist: 240, drain: 50, quake: 0.72, infra: 'NPP_UPZ', infraDist: 7.5 },
+                ISHIKAWA_KANAZAWA: { name: '石川県 金沢港・河北潟周辺沿岸低地', lat: 36.6250, lon: 136.6050, elev: 1.8, dist: 300, drain: 68, quake: 0.55, infra: 'NONE', infraDist: 25.0 },
 
-                FUKUI_WAKASA_MIHAMA_TAKAHAMA: { name: '福井県 美浜町・高浜町・おおい町（美浜/高浜/大飯原発 若狭湾エリア）', elev: 4.2, dist: 220, drain: 50, quake: 0.45, infra: 'NPP_UPZ', infraDist: 6.0 },
-                FUKUI_TSURUGA: { name: '福井県 敦賀市・敦賀原子力発電所/敦賀港エリア', elev: 3.5, dist: 250, drain: 58, quake: 0.48, infra: 'NPP_UPZ', infraDist: 6.5 },
+                FUKUI_WAKASA_MIHAMA_TAKAHAMA: { name: '福井県 美浜町・高浜町・おおい町（美浜/高浜/大飯原発 若狭湾エリア）', lat: 35.5667, lon: 135.9619, elev: 4.2, dist: 220, drain: 50, quake: 0.45, infra: 'NPP_UPZ', infraDist: 6.0 },
+                FUKUI_TSURUGA: { name: '福井県 敦賀市・敦賀原子力発電所/敦賀港エリア', lat: 35.7469, lon: 136.0778, elev: 3.5, dist: 250, drain: 58, quake: 0.48, infra: 'NPP_UPZ', infraDist: 6.5 },
 
-                SHIZUOKA_HAMAOKA: { name: '静岡県 御前崎市・牧之原市・浜岡原子力発電所周辺（UPZ圏内）', elev: 4.5, dist: 250, drain: 55, quake: 0.85, infra: 'NPP_UPZ', infraDist: 6.5 },
-                SHIZUOKA_FUJI_SHIMIZU: { name: '静岡県 富士市・静岡市清水区・駿河湾臨海工業/製紙・化学エリア', elev: 2.0, dist: 200, drain: 78, quake: 0.80, infra: 'COMBINAT', infraDist: 2.5 },
+                SHIZUOKA_HAMAOKA: { name: '静岡県 御前崎市・牧之原市・浜岡原子力発電所周辺（UPZ圏内）', lat: 34.6231, lon: 138.1419, elev: 4.5, dist: 250, drain: 55, quake: 0.85, infra: 'NPP_UPZ', infraDist: 6.5 },
+                SHIZUOKA_FUJI_SHIMIZU: { name: '静岡県 富士市・静岡市清水区・駿河湾臨海工業/製紙・化学エリア', lat: 35.1250, lon: 138.6850, elev: 2.0, dist: 200, drain: 78, quake: 0.80, infra: 'COMBINAT', infraDist: 2.5 },
 
-                AICHI_CHITA_TOKA: { name: '愛知県 東海市・知多市・半田市・衣浦/知多臨海コンビナート', elev: 1.7, dist: 190, drain: 82, quake: 0.58, infra: 'COMBINAT', infraDist: 1.8 },
-                AICHI_NAGOYA_PORT: { name: '愛知県 名古屋市港区・南区・伊勢湾高潮/内水警戒低地', elev: 0.6, dist: 160, drain: 88, quake: 0.60, infra: 'COMBINAT', infraDist: 3.0 },
+                AICHI_CHITA_TOKA: { name: '愛知県 東海市・知多市・半田市・衣浦/知多臨海コンビナート', lat: 35.0120, lon: 136.8850, elev: 1.7, dist: 190, drain: 82, quake: 0.58, infra: 'COMBINAT', infraDist: 1.8 },
+                AICHI_NAGOYA_PORT: { name: '愛知県 名古屋市港区・南区・伊勢湾高潮/内水警戒低地', lat: 35.0880, lon: 136.8820, elev: 0.6, dist: 160, drain: 88, quake: 0.60, infra: 'COMBINAT', infraDist: 3.0 },
 
-                MIE_YOKKAICHI: { name: '三重県 四日市市・川越町・四日市石油化学コンビナート', elev: 1.4, dist: 170, drain: 84, quake: 0.58, infra: 'COMBINAT', infraDist: 1.4 },
-                MIE_ISE_SHIMA: { name: '三重県 伊勢市・志摩市・尾鷲市・熊野灘沿岸エリア', elev: 2.5, dist: 210, drain: 58, quake: 0.72, infra: 'NONE', infraDist: 24.0 },
+                MIE_YOKKAICHI: { name: '三重県 四日市市・川越町・四日市石油化学コンビナート', lat: 34.9650, lon: 136.6450, elev: 1.4, dist: 170, drain: 84, quake: 0.58, infra: 'COMBINAT', infraDist: 1.4 },
+                MIE_ISE_SHIMA: { name: '三重県 伊勢市・志摩市・尾鷲市・熊野灘沿岸エリア', lat: 34.3380, lon: 136.8420, elev: 2.5, dist: 210, drain: 58, quake: 0.72, infra: 'NONE', infraDist: 24.0 },
 
-                OSAKA_SENBOKU_SAKAI: { name: '大阪府 堺市・高石市・泉大津市・堺泉北臨海コンビナート', elev: 0.8, dist: 200, drain: 88, quake: 0.52, infra: 'COMBINAT', infraDist: 1.8 },
-                OSAKA_BAY_LOW: { name: '大阪府 大阪市此花区・大正区・西淀川区・大阪湾低地', elev: 0.4, dist: 180, drain: 90, quake: 0.52, infra: 'COMBINAT', infraDist: 3.2 },
+                OSAKA_SENBOKU_SAKAI: { name: '大阪府 堺市・高石市・泉大津市・堺泉北臨海コンビナート', lat: 34.5680, lon: 135.4420, elev: 0.8, dist: 200, drain: 88, quake: 0.52, infra: 'COMBINAT', infraDist: 1.8 },
+                OSAKA_BAY_LOW: { name: '大阪府 大阪市此花区・大正区・西淀川区・大阪湾低地', lat: 34.6680, lon: 135.4250, elev: 0.4, dist: 180, drain: 90, quake: 0.52, infra: 'COMBINAT', infraDist: 3.2 },
 
-                HYOGO_HANSHIN_HARIMA: { name: '兵庫県 尼崎市・神戸市・姫路市・阪神/播磨臨海コンビナート', elev: 1.3, dist: 190, drain: 84, quake: 0.55, infra: 'COMBINAT', infraDist: 2.2 },
-                HYOGO_TOYOOKA_COAST: { name: '兵庫県 豊岡市・香美町・日本海沿岸/円山川下流エリア', elev: 2.2, dist: 320, drain: 62, quake: 0.40, infra: 'NONE', infraDist: 28.0 },
+                HYOGO_HANSHIN_HARIMA: { name: '兵庫県 尼崎市・神戸市・姫路市・阪神/播磨臨海コンビナート', lat: 34.7750, lon: 134.6750, elev: 1.3, dist: 190, drain: 84, quake: 0.55, infra: 'COMBINAT', infraDist: 2.2 },
+                HYOGO_TOYOOKA_COAST: { name: '兵庫県 豊岡市・香美町・日本海沿岸/円山川下流エリア', lat: 35.6180, lon: 134.8120, elev: 2.2, dist: 320, drain: 62, quake: 0.40, infra: 'NONE', infraDist: 28.0 },
 
-                SHIMANE_SHIMANE_NPP: { name: '島根県 松江市鹿島町・島根原子力発電所周辺（UPZ/PAZ圏内）', elev: 5.2, dist: 230, drain: 50, quake: 0.35, infra: 'NPP_UPZ', infraDist: 6.5 },
-                SHIMANE_MATSUE_IZUMO: { name: '島根県 松江市・出雲市・宍道湖/斐伊川下流沿岸低地', elev: 1.6, dist: 260, drain: 68, quake: 0.35, infra: 'NONE', infraDist: 16.0 },
+                SHIMANE_SHIMANE_NPP: { name: '島根県 松江市鹿島町・島根原子力発電所周辺（UPZ/PAZ圏内）', lat: 35.5386, lon: 132.9994, elev: 5.2, dist: 230, drain: 50, quake: 0.35, infra: 'NPP_UPZ', infraDist: 6.5 },
+                SHIMANE_MATSUE_IZUMO: { name: '島根県 松江市・出雲市・宍道湖/斐伊川下流沿岸低地', lat: 35.4350, lon: 132.9850, elev: 1.6, dist: 260, drain: 68, quake: 0.35, infra: 'NONE', infraDist: 16.0 },
 
-                YAMAGUCHI_SHUNAN: { name: '山口県 周南市・下松市・光市・周南石油化学コンビナート', elev: 2.1, dist: 170, drain: 76, quake: 0.42, infra: 'COMBINAT', infraDist: 1.6 },
-                YAMAGUCHI_IWAKUNI_SHIMONOSEKI: { name: '山口県 岩国市・山陽小野田市・宇部市・臨海工業/瀬戸内沿岸', elev: 2.0, dist: 200, drain: 72, quake: 0.42, infra: 'COMBINAT', infraDist: 2.8 },
+                YAMAGUCHI_SHUNAN: { name: '山口県 周南市・下松市・光市・周南石油化学コンビナート', lat: 34.0420, lon: 131.7980, elev: 2.1, dist: 170, drain: 76, quake: 0.42, infra: 'COMBINAT', infraDist: 1.6 },
+                YAMAGUCHI_IWAKUNI_SHIMONOSEKI: { name: '山口県 岩国市・山陽小野田市・宇部市・臨海工業/瀬戸内沿岸', lat: 34.1480, lon: 132.2250, elev: 2.0, dist: 200, drain: 72, quake: 0.42, infra: 'COMBINAT', infraDist: 2.8 },
 
-                EHIME_IKATA: { name: '愛媛県 伊方町・佐田岬半島・伊方原子力発電所周辺（UPZ/PAZ圏内）', elev: 6.5, dist: 240, drain: 45, quake: 0.55, infra: 'NPP_UPZ', infraDist: 7.0 },
-                EHIME_SAIJO_NIIHAMA: { name: '愛媛県 新居浜市・西条市・燧灘沿岸/住友臨海工業エリア', elev: 1.8, dist: 210, drain: 70, quake: 0.50, infra: 'COMBINAT', infraDist: 2.4 },
+                EHIME_IKATA: { name: '愛媛県 伊方町・佐田岬半島・伊方原子力発電所周辺（UPZ/PAZ圏内）', lat: 33.4906, lon: 132.3106, elev: 6.5, dist: 240, drain: 45, quake: 0.55, infra: 'NPP_UPZ', infraDist: 7.0 },
+                EHIME_SAIJO_NIIHAMA: { name: '愛媛県 新居浜市・西条市・燧灘沿岸/住友臨海工業エリア', lat: 33.9680, lon: 133.2750, elev: 1.8, dist: 210, drain: 70, quake: 0.50, infra: 'COMBINAT', infraDist: 2.4 },
 
-                FUKUOKA_KITAKYUSHU: { name: '福岡県 北九州市（洞海湾・響灘・戸畑/黒崎臨海コンビナート）', elev: 2.0, dist: 180, drain: 78, quake: 0.35, infra: 'COMBINAT', infraDist: 1.8 },
-                FUKUOKA_ARIAKE_COAST: { name: '福岡県 大牟田市・柳川市・有明海沿岸低地', elev: 1.2, dist: 240, drain: 74, quake: 0.35, infra: 'NONE', infraDist: 22.0 },
+                FUKUOKA_KITAKYUSHU: { name: '福岡県 北九州市（洞海湾・響灘・戸畑/黒崎臨海コンビナート）', lat: 33.8950, lon: 130.8450, elev: 2.0, dist: 180, drain: 78, quake: 0.35, infra: 'COMBINAT', infraDist: 1.8 },
+                FUKUOKA_ARIAKE_COAST: { name: '福岡県 大牟田市・柳川市・有明海沿岸低地', lat: 33.1180, lon: 130.4250, elev: 1.2, dist: 240, drain: 74, quake: 0.35, infra: 'NONE', infraDist: 22.0 },
 
-                SAGA_GENKAI: { name: '佐賀県 玄海町・唐津市・玄海原子力発電所周辺（UPZ/PAZ圏内）', elev: 5.0, dist: 230, drain: 50, quake: 0.35, infra: 'NPP_UPZ', infraDist: 7.5 },
-                SAGA_IMARI_KARATSU: { name: '佐賀県 伊万里湾・唐津湾沿岸エリア', elev: 2.2, dist: 220, drain: 62, quake: 0.35, infra: 'NONE', infraDist: 18.0 },
+                SAGA_GENKAI: { name: '佐賀県 玄海町・唐津市・玄海原子力発電所周辺（UPZ/PAZ圏内）', lat: 33.5167, lon: 129.8361, elev: 5.0, dist: 230, drain: 50, quake: 0.35, infra: 'NPP_UPZ', infraDist: 7.5 },
+                SAGA_IMARI_KARATSU: { name: '佐賀県 伊万里湾・唐津湾沿岸エリア', lat: 33.4420, lon: 129.9680, elev: 2.2, dist: 220, drain: 62, quake: 0.35, infra: 'NONE', infraDist: 18.0 },
 
-                OITA_OITA_TSURUSAKI: { name: '大分県 大分市・鶴崎/佐賀関・大分臨海コンビナート', elev: 2.0, dist: 190, drain: 75, quake: 0.45, infra: 'COMBINAT', infraDist: 2.0 },
-                OITA_BEPPU_KUNISAKI: { name: '大分県 別府湾・国東半島沿岸エリア', elev: 2.8, dist: 240, drain: 60, quake: 0.42, infra: 'NONE', infraDist: 25.0 },
+                OITA_OITA_TSURUSAKI: { name: '大分県 大分市・鶴崎/佐賀関・大分臨海コンビナート', lat: 33.2450, lon: 131.6980, elev: 2.0, dist: 190, drain: 75, quake: 0.45, infra: 'COMBINAT', infraDist: 2.0 },
+                OITA_BEPPU_KUNISAKI: { name: '大分県 別府湾・国東半島沿岸エリア', lat: 33.3120, lon: 131.5120, elev: 2.8, dist: 240, drain: 60, quake: 0.42, infra: 'NONE', infraDist: 25.0 },
 
-                KAGOSHIMA_SENDAI_NPP: { name: '鹿児島県 薩摩川内市・川内原子力発電所周辺（UPZ/PAZ圏内）', elev: 4.6, dist: 240, drain: 52, quake: 0.42, infra: 'NPP_UPZ', infraDist: 7.0 },
-                KAGOSHIMA_SHIBUSHI_BAY: { name: '鹿児島県 志布志市・鹿児島湾沿岸/石油備蓄・高潮警戒区', elev: 2.3, dist: 210, drain: 64, quake: 0.45, infra: 'COMBINAT', infraDist: 3.5 }
+                KAGOSHIMA_SENDAI_NPP: { name: '鹿児島県 薩摩川内市・川内原子力発電所周辺（UPZ/PAZ圏内）', lat: 31.8336, lon: 130.1889, elev: 4.6, dist: 240, drain: 52, quake: 0.42, infra: 'NPP_UPZ', infraDist: 7.0 },
+                KAGOSHIMA_SHIBUSHI_BAY: { name: '鹿児島県 志布志市・鹿児島湾沿岸/石油備蓄・高潮警戒区', lat: 31.4720, lon: 131.0980, elev: 2.3, dist: 210, drain: 64, quake: 0.45, infra: 'COMBINAT', infraDist: 3.5 }
             };
 
             const prefectureAreaOptions = {
@@ -2088,49 +2120,24 @@
                 updateFloodCalculation();
             });
 
-            selPref.addEventListener('change', () => {
-                const prefProfiles = {
-                    HOKKAIDO: {
-                        name: '北海道 泊村・苫小牧沿岸エリア（泊原発UPZ圏内／苫小牧臨海コンビナート・津波/積雪複合）',
-                        elev: 3.5, dist: 200, drain: 55, quake: 0.45, infra: 'NPP_UPZ', infraDist: 8.5
-                    },
-                    TOHOKU: {
-                        name: '宮城県・福島県 太平洋沿岸エリア（女川・福島原発UPZ／仙台塩釜コンビナート・津波/地盤沈下複合）',
-                        elev: 2.2, dist: 240, drain: 65, quake: 0.70, infra: 'NPP_UPZ', infraDist: 10.0
-                    },
-                    IBARAKI: {
-                        name: '茨城県 東海村・鹿島臨海エリア（東海第二原発／鹿島石油化学コンビナート・太平洋沿岸）',
-                        elev: 2.8, dist: 220, drain: 60, quake: 0.50, infra: 'COMBINAT', infraDist: 3.0
-                    },
-                    NIIGATA: {
-                        name: '新潟県 柏崎市・新潟東港エリア（柏崎刈羽原発UPZ／新潟臨海工業地帯・日本海沿岸）',
-                        elev: 3.8, dist: 260, drain: 55, quake: 0.55, infra: 'NPP_UPZ', infraDist: 9.0
-                    },
-                    SHIZUOKA: {
-                        name: '静岡県 御前崎・駿河湾/富士エリア（浜岡原発UPZ／製紙・化学臨海地帯・南海トラフ警戒）',
-                        elev: 3.0, dist: 250, drain: 65, quake: 0.80, infra: 'NPP_UPZ', infraDist: 7.5
-                    },
-                    CHUBU_MIE_AICHI: {
-                        name: '三重県・愛知県 四日市・伊勢湾臨海エリア（四日市コンビナート・石油化学/港湾低地）',
-                        elev: 1.5, dist: 160, drain: 82, quake: 0.55, infra: 'COMBINAT', infraDist: 1.8
-                    },
-                    FUKUI: {
-                        name: '福井県 若狭湾・嶺南エリア（美浜・高浜・大飯・敦賀原発集中立地／UPZ・リアス式湾岸）',
-                        elev: 3.6, dist: 210, drain: 50, quake: 0.45, infra: 'NPP_UPZ', infraDist: 6.5
-                    },
-                    SHIMANE: {
-                        name: '島根県 松江市・出雲市エリア（島根原発UPZ圏内／宍道湖・中海・日本海沿岸低地）',
-                        elev: 2.5, dist: 280, drain: 62, quake: 0.35, infra: 'NPP_UPZ', infraDist: 11.0
-                    },
-                    EHIME_YAMAGUCHI: {
-                        name: '愛媛県・山口県 伊方・周南エリア（伊方原発UPZ／周南・岩国大竹コンビナート・瀬戸内沿岸）',
-                        elev: 2.6, dist: 190, drain: 68, quake: 0.45, infra: 'COMBINAT', infraDist: 4.5
-                    },
-                    KYUSHU_NUCLEAR: {
-                        name: '佐賀県・鹿児島県 玄海・川内沿岸エリア（玄海・川内原発UPZ／志布志石油備蓄基地）',
-                        elev: 3.2, dist: 230, drain: 58, quake: 0.40, infra: 'NPP_UPZ', infraDist: 9.5
-                    },
-                    KANSAI: {
+            function updateExternalMapLinks(lat, lon, areaLabel) {
+                const safeLat = Number(lat || 34.49).toFixed(4);
+                const safeLon = Number(lon || 133.946).toFixed(4);
+                const gsiEl = document.getElementById('gsiHazardMapLink');
+                const yahooEl = document.getElementById('yahooRainRadarLink');
+                const coordEl = document.getElementById('externalMapCoordText');
+
+                if (gsiEl) {
+                    gsiEl.href = `https://disaportal.gsi.go.jp/maps/?ll=${safeLat},${safeLon}&z=14&base=pale&vs=1c0j0l0u0t0z0r0s0m0f1`;
+                }
+                if (yahooEl) {
+                    yahooEl.href = `https://map.yahoo.co.jp/v3/place?lat=${safeLat}&lon=${safeLon}&zoom=14&mode=map&layer=rain`;
+                }
+                if (coordEl) {
+                    coordEl.textContent = `連動座標: 北緯 ${safeLat}° / 東経 ${safeLon}°（${areaLabel}）`;
+                }
+            }
+
             function applyMunicipalityProfile(muniKey) {
                 const mp = municipalityProfiles[muniKey];
                 if (!mp) return;
@@ -2141,6 +2148,7 @@
                 setInfraProfile(mp.infra || 'NONE', typeof mp.infraDist === 'number' ? mp.infraDist : 18.0);
                 document.getElementById('geoCoordStatus').textContent =
                     `対象エリア: ${mp.name}（基準標高 ${mp.elev.toFixed(1)}m / 水辺距離 ${mp.dist}m / 施設距離 ${(mp.infraDist || 18.0).toFixed(1)}km）`;
+                updateExternalMapLinks(mp.lat, mp.lon, mp.name);
                 updateFloodCalculation();
             }
 
@@ -2319,6 +2327,7 @@
                         const alt = pos.coords.altitude !== null ? Number(pos.coords.altitude.toFixed(1)) : 3.2;
                         sElev.value = Math.max(0, Math.min(35, alt));
                         statusEl.textContent = `📍 実測GPS座標: 北緯 ${lat}° / 東経 ${lon}°（推定標高 ${alt}m を自動反映）`;
+                        updateExternalMapLinks(lat, lon, `現在地GPS 北緯 ${lat}° / 東経 ${lon}°`);
                         updateFloodCalculation();
                     },
                     () => {
@@ -2328,6 +2337,7 @@
                 );
             });
 
+            updateExternalMapLinks(34.4900, 133.9460, '岡山県 玉野市・宇野港〜三井E&S臨海重工業エリア');
             updateFloodCalculation();
         })();
 
